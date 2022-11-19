@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 
 const friendsRoute = require("./routes/friends.route");
 
@@ -17,6 +18,7 @@ app.use(express.json());
 
 // specifying routes,
 app.use("/friends", friendsRoute);
+app.use("/public", express.static(path.join(__dirname, "public")));
 app.get("/", (req, res) => {
   res.status(200).json("Hello World!");
 });
